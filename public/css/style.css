@@ -19,6 +19,14 @@
   z-index: 1;
 }
 
+.center {
+  margin: 0 auto;
+}
+
+h1 {
+  margin: 30px 0;
+}
+
 .canvas:hover {
   cursor: pointer;
 }
