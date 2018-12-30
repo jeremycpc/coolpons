@@ -12,10 +12,10 @@
   </head>
   <body>
     <div class="container">
-      <h1>Coolpons</h1>
+      <h1 class="text-center">Coolpons</h1>
       <div id="flipdown" class="flipdown"></div>
       <div class="coolpons" style="display: none">
-        <h3>Hey babe, use your mouse/finger to scratch a card to get a prize!</h3>
+        <h3 class="text-center">Hey babe, use your mouse/finger to scratch a card to get a prize!</h3>
         <% coolpons.map((coolpon, index) => { %>
           <div class="scratch-card-container" id= <%= "js-container-" + index %>>
               <% if (!coolpon.claimed) { %>

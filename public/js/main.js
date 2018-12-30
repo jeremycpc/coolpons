@@ -233,7 +233,6 @@ $(document).ready(function() {
     var imageSrc = `../assets/img_${i + 1}.jpg`;
     var coolpon = $(this).find('.coolpon')[0];
 
-    console.log($(this).find('.coolpon'));
     //if there's a canvas, add scratch card. Else, show the coolpon
     if (canvasId) {
       cardFunction(containerId, canvasId, imageSrc, coolpon);
