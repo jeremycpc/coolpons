@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 // const router = require('./routes/routes.js');
 const MongoClient = require('mongodb').MongoClient;
+const PORT = process.env.PORT || 3000;
 const app = express();
 
 // configure app
@@ -33,8 +34,8 @@ MongoClient.connect(
     db = client.db('coolpons');
 
     //start the server
-    app.listen(3000, () => {
-      console.log('Server is up and listening on 3000');
+    app.listen(PORT, () => {
+      console.log('Server is up and listening on: ' + PORT);
     });
   }
 );
