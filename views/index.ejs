@@ -24,30 +24,13 @@
               
               <div class="coolpon" style="visibility: hidden;" data-id= <%= index + 1 %>>
                 <p><%= coolpon.detail %></p>
-                <button class= "btn btn-primary <%= coolpon.claimed ? 'disabled' : 'claim' %>">
+                <button class= "btn <%= coolpon.claimed ? 'btn-danger disabled' : 'btn-primary claim' %>">
                   <%= coolpon.claimed ? 'Claimed' : 'Claim!' %>
                 </button>
               </div>
           </div>
         <% }) %>
       </div>
-
-      <!-- <div class="scratch-card-container" id="js-container">
-        <canvas class="canvas" id="js-canvas" width="300" height="300"></canvas>
-        <form class="form" style="visibility: hidden;">
-          <h2>'Allo, 'Allo!</h2>
-          <h3>The secret code is:</h3>
-          <h1><code>HlkafSYc</code></h1>
-          <div>
-            <input type="text" name="code" placeholder="Secret Code">
-          </div>
-          <br>
-          <div>
-            <input type="submit" value="Submit">
-          </div>
-        </form>  
-      </div> -->
-
     </div>
 
     <script src="jquery.min.js"></script>    
