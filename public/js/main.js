@@ -38,7 +38,7 @@ $(document).ready(function() {
 
     var pastBirthday = birthday - new Date() < 0;
 
-    if (!pastBirthday) {
+    if (pastBirthday) {
       //if current date is past Milly's birthday, show coolpons
       $('.coolpons').show();
     } else {
