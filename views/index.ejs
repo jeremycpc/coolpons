@@ -24,6 +24,7 @@
               
               <div class="coolpon" style="visibility: hidden;" data-id= <%= index + 1 %>>
                 <p><%= coolpon.detail %></p>
+                <input class="notes" type="text" placeholder="Additional notes?" name="notes">
                 <button class= "btn <%= coolpon.claimed ? 'btn-danger disabled' : 'btn-primary claim' %>">
                   <%= coolpon.claimed ? 'Claimed' : 'Claim!' %>
                 </button>

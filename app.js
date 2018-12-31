@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const PORT = process.env.PORT || 3000;
 const app = express();
+const mailer = require('nodemailer');
 
 // configure app
 app.set('view engine', 'ejs');
@@ -77,6 +78,50 @@ app.put('/claim', (req, res) => {
     },
     (err, result) => {
       if (err) return res.send(err);
+      // Use Smtp Protocol to send Email
+      const couponValue = result.value.detail;
+      const notes = req.body.notes;
+      let html;
+
+      if (notes) {
+        html =
+          '<h1>Milly just claimed ' +
+          couponValue +
+          '! She also left a note for you: ' +
+          notes +
+          ' </h1>';
+      } else {
+        html = '<h1>Milly just claimed ' + couponValue + '!';
+      }
+
+      var smtpTransport = mailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+          user: 'jeremycpc2@gmail.com',
+          pass: '127jajbsushi'
+        }
+      });
+
+      var mail = {
+        from: 'Jeremy Chiang <jeremycpc2@gmail.com>',
+        to: 'jeremycpc2@gmail.com',
+        subject: 'Milly claimed ' + couponValue,
+        text: 'Milly just claimed ' + couponValue + ' !',
+        html: html
+      };
+
+      smtpTransport.sendMail(mail, function(error, response) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Message sent: ' + response.messageId);
+        }
+
+        smtpTransport.close();
+      });
+
       res.send(result);
     }
   );

@@ -4,20 +4,24 @@ $(document).ready(function() {
   //claim function
   $('.claim').on('click', function() {
     const id = $(this).closest('.coolpon')[0].dataset.id;
+    const notes = $(this).prev('input')[0].value;
 
     fetch('claim', {
       method: 'put',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         id: id,
-        claimed: true
+        claimed: true,
+        notes: notes
       })
     })
       .then(res => {
+        console.log(res);
         if (res.ok) return res.json();
       })
       .then(data => {
         // Displays alert. Clicking ok will return false
+        console.log(data);
         if (alert(data.value.detail + ' ' + 'succesfully claimed!')) {
         } else {
           window.location.reload();
@@ -34,7 +38,7 @@ $(document).ready(function() {
 
     var pastBirthday = birthday - new Date() < 0;
 
-    if (pastBirthday) {
+    if (!pastBirthday) {
       //if current date is past Milly's birthday, show coolpons
       $('.coolpons').show();
     } else {
