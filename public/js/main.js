@@ -49,7 +49,9 @@ $(document).ready(function() {
 
       var flipdown = new FlipDown(future);
 
-      flipdown.start();
+      flipdown.start().ifEnded(() => {
+        $('.coolpons').show();
+      });
     }
   };
 
