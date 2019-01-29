@@ -194,7 +194,8 @@ $(document).ready(function() {
       filledInPixels = filledInPixels || 0;
       console.log(filledInPixels + '%');
       if (filledInPixels > 70) {
-        canvas.parentNode.removeChild(canvas);
+        // canvas.parentNode.removeChild(canvas);
+        canvas.remove();
       }
     }
 
@@ -241,6 +242,7 @@ $(document).ready(function() {
 
     //if there's a canvas, add scratch card. Else, show the coolpon
     if (canvasId) {
+      console.log(canvasId);
       cardFunction(containerId, canvasId, imageSrc, coolpon);
     } else {
       coolpon.style.visibility = 'visible';
